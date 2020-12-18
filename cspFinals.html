@@ -1,0 +1,199 @@
+<html>
+<center>
+    <head>
+      <title>Guess the Logo Game</title>
+      <script>
+            var pics = ["<img src='BuffaloWildWings.png' width='300px' length='200px'>","<img src = 'TacoBell.png' width='36%' length='36%'>","<img src = 'PizzaHut.png' width='42%' length='42%'>","<img src = 'DairyQueen.png' width='27%' length='27%'>", "<img src = 'Wendys.png' width='24%' length='24%'>", "<img src = 'PaneraBread.jpg' width='33%' length='33%'>", "<img src='Chipotle.jpg' width='22%' length='22%'>","<img src='finished.png' width='22%' length='22%'>"  ];
+            var solutions = ["Buffalo Wild Wings", "Taco Bell", "Pizza Hut", "Dairy Queen", "Wendy's", "Panera Bread", "Chipotle"];
+            var solutions2 = ["buffalo wild wings", "taco bell", "pizza hut", "dairy queen", "wendy's", "panera bread", "chipotle"];
+            var solutions3 = ["Buffalo wild wings", "Taco bell", "Pizza hut", "Dairy queen", "Wendy's", "Panera bread", "Chipotle"];
+            var answers = []; // Populate this with user answers
+            var index = 0; // Add one to this in getUserAnswers to advance
+            var score = 0; // This gets added to in the checkAnswers() function
+            var table = ""; // This gets created in the displayResult() function
+            function getUserAnswers()
+            {
+              answers[index] = document.getElementById('userAns').value;
+              index = index + 1;
+              if(index >= 7)
+              {
+                checkAnswers();
+              }
+              document.getElementById('picture').innerHTML =pics[index];
+
+//              var answers = document.getElementById("answers").value;
+              // Where you populate the answers array
+              // Very similar to pop() array
+              // Once index equals pics.length
+            }
+
+            function checkAnswers()
+            {
+              // Using a loop, loop through the values in solutions array
+              // and check if they are equal to the values in answers array
+              // If answer[i] == solutions[i]  then add one to a score variable
+              // Once the loop terminates and checks all checkAnswers
+              if(answers[0] == solutions[0] || answers[0] == solutions2[0] || answers[0] == solutions3[0])
+              {
+                score++;
+              }
+              if(answers[1] == solutions[1] || answers[1] == solutions2[1] || answers[1] == solutions3[1])
+              {
+                score++;
+              }
+
+              if(answers[2] == solutions[2] || answers[2] == solutions2[2] || answers[2] == solutions3[2])
+              {
+                score++;
+              }
+
+              if(answers[3] == solutions[3] || answers[3] == solutions2[3] || answers[3] == solutions3[3])
+              {
+                score++;
+              }
+
+              if(answers[4] == solutions[4] || answers[4] == solutions2[4] || answers[4] == solutions3[4])
+              {
+                score++;
+              }
+
+              if(answers[5] == solutions[5] || answers[5] == solutions2[5] || answers[5] == solutions3[5])
+              {
+                score++;
+              }
+
+              if(answers[6] == solutions[6] || answers[6] == solutions2[6] || answers[6] == solutions3[6])
+              {
+                score++;
+              }
+
+              displayResult();
+            }
+
+            function displayResult()
+            {
+              // Sends a table to a span tag with the results
+              // Should look like this:
+
+              // Your Score:  4/5
+              // Answer 1: Cat  Your Answer: Cat
+              // Answer 2: Dog  Your Answer: Dog
+              // Answer 3: Fish  Your Answer: Fish
+              // Answer 4: Camel  Your Answer: Camel
+              // Answer 5: Griaffe  Your Answer: ajkdjahdk
+              table = table + "Score:" + "&nbsp" + score + "/7" + "<br>" +
+                              "ANSWER 1 -- " + solutions[0] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[0] + "<br>" +
+                              "ANSWER 2 -- " + solutions[1] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[1] + "<br>" +
+                              "ANSWER 3 -- " + solutions[2] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[2] + "<br>" +
+                              "ANSWER 4 -- " + solutions[3] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[3] + "<br>" +
+                              "ANSWER 5 -- " + solutions[4] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[4] + "<br>" +
+                              "ANSWER 6 -- " + solutions[5] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[5] + "<br>" +
+                              "ANSWER 7 -- " + solutions[6] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[6];
+              document.getElementById('display').innerHTML = table;
+              document.getElementById('again').style.visibility = "visible";
+            }
+
+            function reset()
+            {
+              // Sets the user's answer array back to empty using .splice
+              // Score = 0
+              // Index = 0 so that you start on the first picture again
+              // Hide the reset button again .style.visibility = "hidden";
+              score = 0;
+              table = "";
+              var target = 1;
+              for(var i=answers.length-1;i>=0; i--)
+            {
+              if(answers[i] == target)
+              {
+                answers.splice(i,1);
+              }
+            }
+              document.getElementById('display').innerHTML = table ;
+              document.getElementById('picture').innerHTML = pics[0];
+              document.getElementById('again').style.visibility = "hidden";
+              index = 0;
+            }
+
+            function hide()
+            {
+              // Hide the reset button
+              // Using document.GetElementById('id').style.visibility = "hidden";
+              document.getElementById('again').style.visibility = "hidden";
+            }
+      </script>
+      <style>
+        body{
+          background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/03/Picture-sunset-wallpaper-HD.jpg);
+          color: white;
+          font-family: monospace;
+          font-size: 20px;
+        }
+
+        script{
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        h2{
+          border: 5px solid LightBlue;
+          border-style: outset;
+          border-radius: 10px;
+          animation: mymove 5s infinite;
+          background: red;
+          font-size: 60px;
+          font-family: sans-serif;
+          margin: 20px 400px;
+        }
+
+        @keyframes mymove {
+          from {top: 0px; background-color: black;}
+          to {top: 200px; background-color: white;}
+          50% {color: black;}
+        }
+
+        #next{
+          font-size: 20px;
+        }
+
+        #next:hover{
+          background-color: purple;
+          color: white;
+          border-radius: 5px;
+          border: 2px solid crimson;
+        }
+
+        #again{
+          font-size: 20px;
+        }
+
+        #again:hover{
+          background-color: tomato;
+          color: black;
+          border-radius: 5px;
+          border: 2px solid lightblue;
+        }
+
+        #userAns
+          {
+              height:35px;
+              font-size:14pt;
+          }
+      </style>
+    </head>
+
+
+    <body onload="hide()">
+       <!--You Complete HTML-->
+       <h2>Guess the Logo!</h2>
+       <br><br>
+       <span id="picture"><img src="BuffaloWildWings.png" width='300px' length='200px'></span>
+       <br><br>
+       <span id="display"></span>
+       <br><br>
+       <input id="userAns" type="text" onfocus="this.value=''">
+       <input id="next" type="button" value="Next" onclick="getUserAnswers()">
+       <input id="again" type="button" value="Play Again" onload="hide()" onclick="reset()">
+    </body>
+</center>
+</html>
